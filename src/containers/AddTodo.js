@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { add } from '../actions/todo';
 
 let AddTodo = ({ onAddTodo }) => {
   let input
@@ -25,3 +26,11 @@ let AddTodo = ({ onAddTodo }) => {
 AddTodo.propTypes = {
   onAddTodo: PropTypes.func.isRequired
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddTodo: title => dispatch(add(title))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddTodo)

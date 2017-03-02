@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { toggle, remove } from '../actions/todo';
 import Todo from '../components/Todo'
 
 const TodoList = ({ todos, onTodoToggle, onTodoRemove }) => (
@@ -24,3 +25,18 @@ TodoList.propTypes = {
   onTodoToggle: PropTypes.func.isRequired,
   onTodoRemove: PropTypes.func.isRequired,
 }
+
+const mapStatetoProps = (state) => {
+  return {
+    todos: state
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onTodoToggle: id => dispatch(toggle(id)),
+    onTodoRemove: id => dispatch(remove(id))
+  }
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(TodoList);
