@@ -1,8 +1,10 @@
-import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../actions/todo';
+import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO, TODOS_FETCHED } from '../actions/todo';
 
 
 export const todoReducer = (state = [], action) => {
   switch (action.type) {
+    case TODOS_FETCHED:
+      return action.todos
     case ADD_TODO:
       return [...state, action.todo]
     case REMOVE_TODO:
